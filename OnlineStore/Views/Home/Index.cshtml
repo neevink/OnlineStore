@@ -1,5 +1,72 @@
-﻿@{
-    ViewBag.Title = "Home Page";
+﻿@model IEnumerable<OnlineStore.ViewModels.ProductViewModel>
+@{
+    ViewBag.Title = "Главная";
 }
 
-Hello world!
+<div class="grid-container">
+    @foreach (var e in Model)
+    {
+    <div class="grid-element">
+        <div class="element-cart-icon-wrapper">
+            <img class="element-cart-icon" src="~/Content/cart-icon.png" />
+        </div>
+        <!-- Тут заменить src на data -->
+        <img class="element-img" src="~/Content/melltorp-stol.jpg" />
+        <div class="element-name">
+            <a href="">@e.Name</a>
+        </div>
+        <div class="element-description">
+            @e.ShortDescription
+        </div>
+        <div class="element-price">
+            $@e.Price
+        </div>
+    </div>
+    }
+
+    <div class="grid-element">
+        <div class="element-cart-icon-wrapper">
+            <img class="element-cart-icon" src="~/Content/cart-icon.png" />
+        </div>
+        <img class="element-img" src="~/Content/melltorp-stol.jpg" />
+        <div class="element-name">
+            <a href="">Mentropol стол</a>
+        </div>
+        <div class="element-description">
+            Стол белый глянцевый, 75x75 см
+        </div>
+        <div class="element-price">
+            $34
+        </div>
+    </div>
+    <div class="grid-element">
+        <div class="element-cart-icon-wrapper">
+            <img class="element-cart-icon" src="~/Content/cart-icon.png" />
+        </div>
+        <img class="element-img" src="~/Content/eggelstad-chair.jpg" />
+        <div class="element-name">
+            <a href="">ЭГГЕЛЬСТАД стул</a>
+        </div>
+        <div class="element-description">
+            Стул, под антик
+        </div>
+        <div class="element-price">
+            $25
+        </div>
+    </div>
+    <div class="grid-element">
+        <div class="element-cart-icon-wrapper">
+            <img class="element-cart-icon" src="~/Content/cart-icon.png" />
+        </div>
+        <img class="element-img" src="~/Content/rakkestad-wardrobe.jpg" />
+        <div class="element-name">
+            <a href="">РАККЕСТАД гардероб</a>
+        </div>
+        <div class="element-description">
+            Гардероб 3-дверный, черно-коричневый117x176 см
+        </div>
+        <div class="element-price">
+            $109
+        </div>
+    </div>
+</div>

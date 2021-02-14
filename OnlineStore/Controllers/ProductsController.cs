@@ -12,6 +12,13 @@ using OnlineStore.DataModels;
 
 namespace OnlineStore.Controllers
 {
+    //
+    //
+    // Читай это: https://www.smarly.net/pro-asp-net-mvc-4/introducing-asp-net-mvc-4/sportsstore-security-finishing-touches/image-uploads
+    //
+    //
+
+
     public class ProductsController : Controller
     {
         private StoreContext db = new StoreContext();

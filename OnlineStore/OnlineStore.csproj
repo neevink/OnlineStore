@@ -139,6 +139,7 @@
     <Compile Include="DataModels\FurnitureType.cs" />
     <Compile Include="DataModels\Role.cs" />
     <Compile Include="DataModels\RoleEnum.cs" />
+    <Compile Include="Data\Mapper.cs" />
     <Compile Include="Data\StoreContext.cs" />
     <Compile Include="Data\StoreContextInitializer.cs" />
     <Compile Include="ExtensionMethods\DbSetExtension.cs" />
@@ -146,16 +147,18 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\ProductViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\bootstrap-theme.css" />
-    <Content Include="Content\bootstrap-theme.min.css" />
-    <Content Include="Content\bootstrap.css" />
-    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\cart-icon.png" />
+    <Content Include="Content\eggelstad-chair.jpg" />
+    <Content Include="Content\logo.png" />
+    <Content Include="Content\main.css" />
+    <Content Include="Content\melltorp-stol.jpg" />
+    <Content Include="Content\rakkestad-wardrobe.jpg" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
@@ -186,6 +189,7 @@
     <Content Include="Views\Products\Details.cshtml" />
     <Content Include="Views\Products\Edit.cshtml" />
     <Content Include="Views\Products\Index.cshtml" />
+    <Content Include="Views\Home\Detail.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
@@ -193,10 +197,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="Content\bootstrap.min.css.map" />
-    <Content Include="Content\bootstrap.css.map" />
-    <Content Include="Content\bootstrap-theme.min.css.map" />
-    <Content Include="Content\bootstrap-theme.css.map" />
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />

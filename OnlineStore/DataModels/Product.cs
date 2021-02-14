@@ -17,6 +17,10 @@ namespace OnlineStore.DataModels
         public string Name { get; set; }
 
         //[Required]
+        //[MaxLength(32)]
+        public string ShortDescription { get; set; }
+
+        //[Required]
         //[MaxLength(128)]
         public string Description { get; set; }
 
