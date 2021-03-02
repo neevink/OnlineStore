@@ -14,6 +14,7 @@ namespace OnlineStore.Data
         {
             ProductViewModel resoult = new ProductViewModel()
             {
+                Id = data.Id,
                 Name = data.Name,
                 ShortDescription = data.ShortDescription,
                 Price = data.Price,

@@ -73,10 +73,11 @@ footer{
     padding: 20px;
 }
 
-.element-img{
+.element-img {
     margin-left: auto;
     margin-right: auto;
     width: 100%;
+    pointer-events: none;
 }
 
 .element-name{
@@ -97,20 +98,30 @@ footer{
 
 .element-cart-icon{
     width: 25px;
-    position: relative;
-    left: 170px;
-    top: 275px;
-}
-
-.element-cart-icon-wrapper{
-    height: 0;
 }
 
 .element-cart-icon:hover{
     cursor: pointer;
     width: 30px;
+}
+
+.element-cart-icon-link{
+    display: block;
+    width: 25px;
+    height: 25px;
+    position: relative;
+    left: 170px;
+    top: 275px;
+}
+
+.element-cart-icon-link:hover{
+    cursor: pointer;
     left: 168px;
     top: 273px;
+}
+
+.element-cart-icon-wrapper{
+    height: 0;
 }
 
 .element-name a{
