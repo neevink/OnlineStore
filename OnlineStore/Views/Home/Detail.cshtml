@@ -4,96 +4,58 @@
     ViewBag.Title = Model.Name;
 }
 
-<div>
-    <h4>Product</h4>
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Color.Name)
-        </dt>
+<div class="container">
+    <div class="row">
+        <div class="col-left">
+            <img src="data:image/jpeg;base64,@Convert.ToBase64String(Model.MainImage)" />
+        </div>
+        <div class="col-right">
+            <div class="infoboard">
+                <h2>@Html.DisplayFor(m => m.Name)</h2>
+                
+                <div class="description">@Html.DisplayFor(m => m.ShortDescription)</div>
+                
+                <br />
+                <div class="price">
+                    $@Html.DisplayFor(m => m.Price)
+                </div>
+                <br />
 
-        <dd>
-            @Html.DisplayFor(model => model.Color.Name)
-        </dd>
+                Цвет:
+                @Html.DisplayFor(m => m.Color.Name)
+                <br />
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
+                На складе:
+                @Html.DisplayFor(m => m.StockQuantity)
+                <br/>
 
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
+                <a href="#" class="yellow-link">Добавить в корзину</a>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ShortDescription)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ShortDescription)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Description)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.SKU)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.SKU)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Width)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Width)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Length)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Length)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Hight)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Hight)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.MainImage)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.MainImage)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Price)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Price)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.StockQuantity)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.StockQuantity)
-        </dd>
-
-    </dl>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="additioninfo">
+            <p>
+                Полное описание:
+                @Html.DisplayFor(m => m.Description)
+            </p>
+            <p>
+                Артикул:
+                <span class="sku">
+                    @Html.DisplayFor(m => m.SKU)
+                </span>
+            </p>
+            <p>
+                Ширина:
+                @Html.DisplayFor(m => m.Width)см
+                <br />
+                Длина:
+                @Html.DisplayFor(m => m.Length)см
+                <br />
+                Высота:
+                @Html.DisplayFor(m => m.Hight)см
+            </p>
+        </div>
+    </div>
 </div>

@@ -130,6 +130,9 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="AutoMapper\MapperGlobalConfiguration.cs" />
+    <Compile Include="AutoMapper\MapperRules.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="DataModels\Account.cs" />
@@ -142,7 +145,6 @@
     <Compile Include="DataModels\FurnitureType.cs" />
     <Compile Include="DataModels\Role.cs" />
     <Compile Include="DataModels\RoleEnum.cs" />
-    <Compile Include="Data\Mapper.cs" />
     <Compile Include="Data\StoreContext.cs" />
     <Compile Include="Data\StoreContextInitializer.cs" />
     <Compile Include="ExtensionMethods\DbSetExtension.cs" />

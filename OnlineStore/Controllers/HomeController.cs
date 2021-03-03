@@ -6,18 +6,25 @@ using System.Web;
 using System.Web.Mvc;
 using OnlineStore.Data;
 using OnlineStore.DataModels;
+using System.Data.Entity;
+
+using OnlineStore.ViewModels;
 
 namespace OnlineStore.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
         private StoreContext db = new StoreContext();
 
         [HttpGet]
         public ActionResult Index()
         {
+        
+
             // Тут сервис добавь, чтобы отсюда дёргался сервис, а не контроллер в бд лазил
-            var res = Mapper.Map(db.Products.ToList());
+            //var res = OnlineStore.Data.Mapper.Map(db.Products.ToList());
+
+            var res = Mapper.Map<List<Product>, List<ProductViewModel>>(db.Products.ToList());
 
             return View(res);
         }
@@ -30,7 +37,7 @@ namespace OnlineStore.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            var product = db.Products.Find(id);
+            var product = db.Products.Include(x => x.Color).Where(x => x.Id == id).First();
             if(product == null)
             {
                 return HttpNotFound();

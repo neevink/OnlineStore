@@ -1,4 +1,6 @@
-﻿body {
+/* Навигационная панель */
+
+body {
     margin:0;
     font-family: 'Open Sans', sans-serif;
     background-color:whitesmoke;
@@ -48,10 +50,10 @@ footer{
     background-color: white;
 }
 
-/* Новые стили ниже */
+/* Стили для страницы каталога */
 
 .grid-container{
-    width: 75%;
+    width: 80%;
     margin: auto;
 
 
@@ -131,4 +133,100 @@ footer{
 
 .element-name a:hover{
     cursor: pointer;
+}
+
+/* Страница детализации товара */
+
+.container{
+    width: 75%;
+    margin: auto;
+
+    background-color: white;
+    border-radius: 10px;
+}
+
+.row{
+    display: block;
+    width: 100%;
+}
+
+.col-left{
+    display: inline-block;
+    height: 100%;
+    width: 49%;
+}
+
+.col-right{
+    display: inline-block;
+    width: 50%;
+
+    vertical-align: top;
+}
+
+.col-left img{
+    display: block;
+    margin: 20px auto;
+    width: 60%;
+}
+
+.infoboard{
+    margin: 40px 20px;
+}
+
+.infoboard .description{
+    color: gray;
+}
+
+.infoboard .price{
+    font-weight: bold;
+}
+
+.infoboard .availible{ /*Если не используешь, то выпили*/
+    color: rgb(64, 185, 154);
+}
+
+.infoboard a.yellow-link{
+    margin-top: 40px;
+}
+
+a.yellow-link{
+    margin: 10px;
+    color:white;
+    font-weight: normal;
+    text-decoration: none;
+    display: block;
+
+    border-radius: 7px;
+    background-color: rgb(254, 216, 1);
+    border: 10px solid rgb(254, 216, 1);
+    height: 20px;
+    width: 170px;
+
+    text-align: center;
+}
+
+a.yellow-link:hover {
+    color: whitesmoke;
+    background-color: rgb(241, 207, 13);
+    border: 10px solid rgb(241, 207, 13);
+}
+
+.row .additioninfo{
+    padding: 30px 20px;
+    color: rgb(58, 58, 58);
+}
+
+.additioninfo p{
+    margin-top: 10px;
+}
+
+.additioninfo span{
+
+    font-size: 0.8em;
+    font-weight: bold;
+    color: white;
+    background-color: black;
+    border: 7px solid black;
+    border-radius: 3px;
+    
 }

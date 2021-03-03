@@ -19,7 +19,7 @@ namespace OnlineStore.Controllers
     //
 
 
-    public class ProductsController : Controller
+    public class ProductsController : BaseController
     {
         private StoreContext db = new StoreContext();
 
