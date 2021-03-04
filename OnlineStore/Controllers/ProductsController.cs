@@ -29,14 +29,14 @@ namespace OnlineStore.Controllers
             return View(db.Products.Include(m => m.Color).ToList());
         }
 
-        // GET: Products/Details/5
+        // GET: Products/Details/id
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Product product = db.Products.Find(id);
+            Product product = db.Products.Include(x => x.Color).Where(x => x.Id == id).First();
             if (product == null)
             {
                 return HttpNotFound();
@@ -53,12 +53,17 @@ namespace OnlineStore.Controllers
         }
 
         // POST: Products/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        // Обязательно прочитай позже про Атрибут ValidateAntiforgeryToken https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(Product product, HttpPostedFileBase image)
         {
+            if(image == null)
+            {
+                ModelState.AddModelError("image", "Картинка обязательна");
+                return View(product);
+            }
+
             if (ModelState.IsValid)
             {
                 byte[] imageData = null;
@@ -103,7 +108,7 @@ namespace OnlineStore.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(Product product, HttpPostedFileBase image)
-        {
+        {            
             if (ModelState.IsValid)
             {
                 if(image != null)
@@ -119,32 +124,16 @@ namespace OnlineStore.Controllers
                 }
                 else
                 {
-                    product.MainImage = db.Products.Where(x => x.Id == product.Id).First().MainImage;
+                    product.MainImage = db.Products.AsNoTracking().Where(x => x.Id == product.Id).First().MainImage;
                 }
 
                 db.Entry(product).State = EntityState.Modified;
-
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
             return View(product);
         }
-
-        // GET: Products/Delete/5
-        public ActionResult Delete(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Product product = db.Products.Find(id);
-            if (product == null)
-            {
-                return HttpNotFound();
-            }
-            return View(product);
-        }
-
+        
         // POST: Products/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]

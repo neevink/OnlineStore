@@ -1,112 +1,122 @@
 ﻿@model OnlineStore.DataModels.Product
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Добавить товар";
 }
 
-<h2>Create</h2>
+<div class="container">
+    <div class="wrapper">
+        @using (Html.BeginForm("Create", "Products", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
 
+            <h2>Добавить новый товар в каталог</h2>
+            @Html.ActionLink("Отмена", "Index", null, new { @class="simple-link"} )
 
-@using (Html.BeginForm("Create", "Products", FormMethod.Post, new { enctype = "multipart/form-data" }))
-{
-    @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true, "", new { @class = "" })
 
-    <h4>Product</h4>
-    <hr />
-    @Html.ValidationSummary(true, "", new { @class = "" })
-    <div>
-        @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "" })
-        <div>
-            @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "" } })
-            @Html.ValidationMessageFor(model => model.Name, "", new { @class = "" })
+            <table class="entity-view-table">
+                <tr>
+                    <td>
+                        Артикул
+                    </td>
+                    <td>
+                        @Html.EditorFor(m => m.SKU, new { htmlAttributes = new { @class = "input-text" } })
+                        @Html.ValidationMessageFor(m => m.SKU, "", new { @class = "" })
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Название
+                    </td>
+                    <td>
+                        @Html.EditorFor(m => m.Name, new { htmlAttributes = new { @class = "input-text" } })
+                        @Html.ValidationMessageFor(m => m.Name, "", new { @class = "" })
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Цвет
+                    </td>
+                    <td>
+                        @Html.DropDownListFor(m => m.ColorId, ViewBag.ListOfColors as SelectList, new {@class="input-text"})
+                        @Html.ValidationMessageFor(m => m.Color, "", new { @class = "" })
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Короткое описание
+                    </td>
+                    <td>
+                        @Html.EditorFor(m => m.ShortDescription, new { htmlAttributes = new { @class = "input-text" } })
+                        @Html.ValidationMessageFor(m => m.ShortDescription, "", new { @class = "" })
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Описание
+                    </td>
+                    <td>
+                        @Html.TextAreaFor(m => m.Description, new { htmlAttributes = new { @class = "input-text" } })
+                        @Html.ValidationMessageFor(m => m.Description, "", new { @class = "" })
+                    </td>
+                </tr>
+                                <tr>
+                    <td>
+                        Цена
+                    </td>
+                    <td>
+                        @Html.EditorFor(m => m.Price, new { htmlAttributes = new { @class = "input-text" } })
+                        @Html.ValidationMessageFor(m => m.Price, "", new { @class = "" })
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Количество на складе
+                    </td>
+                    <td>
+                        @Html.EditorFor(m => m.StockQuantity, new { htmlAttributes = new { @class = "input-text" } })
+                        @Html.ValidationMessageFor(m => m.StockQuantity, "", new { @class = "" })
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Ширина
+                    </td>
+                    <td>
+                        @Html.EditorFor(m => m.Width, new { htmlAttributes = new { @class = "input-text" } })
+                        @Html.ValidationMessageFor(m => m.Width, "", new { @class = "" })
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Длина
+                    </td>
+                    <td>
+                        @Html.EditorFor(m => m.Length, new { htmlAttributes = new { @class = "input-text" } })
+                        @Html.ValidationMessageFor(m => m.Length, "", new { @class = "" })
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Высота
+                    </td>
+                    <td>
+                        @Html.EditorFor(m => m.Hight, new { htmlAttributes = new { @class = "input-text" } })
+                        @Html.ValidationMessageFor(m => m.Hight, "", new { @class = "" })
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Главное изображение
+                    </td>
+                    <td>
+                        <input type="file" name="Image" class=""/>
+                    </td>
+                </tr>
+            </table>
+
+            <input type="submit" value="Создать" class="yellow-btn" />
+        }
         </div>
-    </div>
-
-    <div>
-        @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "" })
-        <div>
-            @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "" } })
-            @Html.ValidationMessageFor(model => model.Description, "", new { @class = "" })
-        </div>
-    </div>
-
-    <div>
-        @Html.LabelFor(model => model.ShortDescription, htmlAttributes: new { @class = "" })
-        <div>
-            @Html.EditorFor(model => model.ShortDescription, new { htmlAttributes = new { @class = "" } })
-            @Html.ValidationMessageFor(model => model.ShortDescription, "", new { @class = "" })
-        </div>
-    </div>
-
-    <div>
-        @Html.LabelFor(model => model.SKU, htmlAttributes: new { @class = "" })
-        <div>
-            @Html.EditorFor(model => model.SKU, new { htmlAttributes = new { @class = "" } })
-            @Html.ValidationMessageFor(model => model.SKU, "", new { @class = "" })
-        </div>
-    </div>
-
-    <div>
-        @Html.LabelFor(model => model.Width, htmlAttributes: new { @class = "" })
-        <div>
-            @Html.EditorFor(model => model.Width, new { htmlAttributes = new { @class = "" } })
-            @Html.ValidationMessageFor(model => model.Width, "", new { @class = "" })
-        </div>
-    </div>
-
-    <div>
-        @Html.LabelFor(model => model.Length, htmlAttributes: new { @class = "" })
-        <div>
-            @Html.EditorFor(model => model.Length, new { htmlAttributes = new { @class = "" } })
-            @Html.ValidationMessageFor(model => model.Length, "", new { @class = "" })
-        </div>
-    </div>
-
-    <div>
-        @Html.LabelFor(model => model.Hight, htmlAttributes: new { @class = "" })
-        <div>
-            @Html.EditorFor(model => model.Hight, new { htmlAttributes = new { @class = "" } })
-            @Html.ValidationMessageFor(model => model.Hight, "", new { @class = "" })
-        </div>
-    </div>
-
-    <div>
-        @Html.LabelFor(model => model.MainImage, htmlAttributes: new { @class = "" })
-        <div>
-            <input type="file" name="Image" />
-        </div>
-    </div>
-
-    <div>
-        @Html.LabelFor(model => model.Price, htmlAttributes: new { @class = "" })
-        <div>
-            @Html.EditorFor(model => model.Price, new { htmlAttributes = new { @class = "" } })
-            @Html.ValidationMessageFor(model => model.Price, "", new { @class = "" })
-        </div>
-    </div>
-
-    <div>
-        @Html.LabelFor(model => model.StockQuantity, htmlAttributes: new { @class = "" })
-        <div>
-            @Html.EditorFor(model => model.StockQuantity, new { htmlAttributes = new { @class = "" } })
-            @Html.ValidationMessageFor(model => model.StockQuantity, "", new { @class = "" })
-        </div>
-    </div>
-
-    <div>
-        @Html.LabelFor(model => model.Color, htmlAttributes: new { @class = "" })
-        <div>
-            @Html.DropDownListFor(model => model.ColorId, ViewBag.ListOfColors as SelectList)
-        </div>
-    </div>
-
-    <div>
-        <div>
-            <input type="submit" value="Create" class="btn btn-default" />
-        </div>
-    </div>
-}
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
 </div>

@@ -158,9 +158,13 @@
     <Content Include="Content\cart-icon.png" />
     <Content Include="Content\eggelstad-chair.jpg" />
     <Content Include="Content\logo.png" />
+    <Content Include="Content\magnifier.png" />
     <Content Include="Content\main.css" />
     <Content Include="Content\melltorp-stol.jpg" />
+    <Content Include="Content\pen-with-line.png" />
+    <Content Include="Content\pen.png" />
     <Content Include="Content\rakkestad-wardrobe.jpg" />
+    <Content Include="Content\trash.png" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
@@ -176,7 +180,6 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Products\Create.cshtml" />
-    <Content Include="Views\Products\Delete.cshtml" />
     <Content Include="Views\Products\Details.cshtml" />
     <Content Include="Views\Products\Edit.cshtml" />
     <Content Include="Views\Products\Index.cshtml" />

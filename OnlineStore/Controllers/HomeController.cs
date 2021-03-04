@@ -19,11 +19,6 @@ namespace OnlineStore.Controllers
         [HttpGet]
         public ActionResult Index()
         {
-        
-
-            // Тут сервис добавь, чтобы отсюда дёргался сервис, а не контроллер в бд лазил
-            //var res = OnlineStore.Data.Mapper.Map(db.Products.ToList());
-
             var res = Mapper.Map<List<Product>, List<ProductViewModel>>(db.Products.ToList());
 
             return View(res);
@@ -45,6 +40,5 @@ namespace OnlineStore.Controllers
 
             return View(product);
         }
-
     }
 }

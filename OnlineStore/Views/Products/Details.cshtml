@@ -1,90 +1,122 @@
 ﻿@model OnlineStore.DataModels.Product
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = Model.Name;
 }
 
-<h2>Details</h2>
+<div class="container">
+    <div class="wrapper">
+        @using (Html.BeginForm("Edit", "Products", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
 
-<div>
-    <h4>Product</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
+            <h2>Обзор товара</h2>
+            @Html.ActionLink("Назад", "Index", null, new { @class = "simple-link" })
 
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
+            @Html.ValidationSummary(true, "", new { @class = "" })
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
+            <table class="entity-view-table">
+                <tr>
+                    <td>
+                        Артикул
+                    </td>
+                    <td>
+                        @Html.DisplayFor(m => m.SKU)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Название
+                    </td>
+                    <td>
+                        @Html.DisplayFor(m => m.Name)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Цвет
+                    </td>
+                    <td>
+                        @Html.DisplayFor(m => m.Color.Name)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Короткое описание
+                    </td>
+                    <td>
+                        @Html.DisplayFor(m => m.ShortDescription)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Описание
+                    </td>
+                    <td>
+                        @Html.DisplayFor(m => m.Description)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Цена
+                    </td>
+                    <td>
+                        @Html.DisplayFor(m => m.Price)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Количество на складе
+                    </td>
+                    <td>
+                        @Html.DisplayFor(m => m.StockQuantity)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Ширина
+                    </td>
+                    <td>
+                        @Html.DisplayFor(m => m.Width)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Длина
+                    </td>
+                    <td>
+                        @Html.DisplayFor(m => m.Length)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Высота
+                    </td>
+                    <td>
+                        @Html.DisplayFor(m => m.Hight)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Главное изображение
+                    </td>
+                    <td>
+                        @if (Model.MainImage != null)
+                        {
+                            @Html.Raw("<img class='big-img' src=\"data:image/jpeg;base64," + Convert.ToBase64String(Model.MainImage) + "\" />")
+                        }
+                    </td>
+                </tr>
+            </table>
 
-        <dd>
-            @Html.DisplayFor(model => model.Description)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.SKU)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.SKU)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Width)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Width)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Length)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Length)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Hight)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Hight)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.MainImage)
-        </dt>
-
-        <dd>
-            @Html.Raw("<img style='width:80px; height:60px;' src=\"data:image/jpeg;base64," + Convert.ToBase64String(Model.MainImage) + "\" />")
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Price)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Price)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.StockQuantity)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.StockQuantity)
-        </dd>
-
-    </dl>
+            <input type="submit" value="Сохранить" class="yellow-btn" />
+        }
+        <br />
+        @using (Html.BeginForm("Delete", "Products", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+            @Html.HiddenFor(m => m.Id)
+            <input type="submit" value="Удалить" class="yellow-btn" />
+        }
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

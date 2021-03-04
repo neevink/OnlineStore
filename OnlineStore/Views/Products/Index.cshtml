@@ -1,91 +1,90 @@
 ﻿@model IEnumerable<OnlineStore.DataModels.Product>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Обзор товаров";
 }
 
-<h2>Index</h2>
+<div class="container">
+    <div class="wrapper">
+        <h2>Список всех товаров</h2>
+    <a href="@Url.Action("Create", "Products")" class="yellow-link">
+        <!-- <img src="~/Content/pen-with-line.png" /> -->
+        + Создать
+    </a>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Description)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.SKU)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Width)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Length)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Hight)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Color)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.MainImage)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Price)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.StockQuantity)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model)
-{
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Description)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.SKU)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Width)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Length)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Hight)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Color.Name)
-        </td>
-        <td>
-            @if (item.MainImage != null)
-            {
-                @Html.Raw("<img style='width:80px; height:60px;' src=\"data:image/jpeg;base64," + Convert.ToBase64String(item.MainImage) + "\" />")
-            }
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Price)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.StockQuantity)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-        </td>
-    </tr>
-}
-
-</table>
+        <table>
+            <thead>
+                <tr>
+                    <th>
+                        Артикул
+                    </th>
+                    <th>
+                        Название
+                    </th>
+                    <th>
+                        Цвет
+                    </th>
+                    <th>
+                        Короткое описание
+                    </th>
+                    <th>
+                        Изображение
+                    </th>
+                    <th>
+                        Цена
+                    </th>
+                    <th>
+                        Количество
+                    </th>
+                    <th>
+                        Действие
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var e in Model)
+                {
+                    <tr>
+                        <td>
+                            <span class="sku">
+                                @Html.DisplayFor(m => e.SKU)
+                            </span>
+                        </td>
+                        <td>
+                            <a href="@Url.Action("Details", "Products", new { id = e.Id })" class="simple-link">
+                                @Html.DisplayFor(m => e.Name)
+                            </a>
+                        </td>
+                        <td>
+                            @Html.DisplayFor(m => e.Color.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(m => e.ShortDescription)
+                        </td>
+                        <td>
+                            @if (e.MainImage != null)
+                            {
+                                @Html.Raw("<img class='little-img' src=\"data:image/jpeg;base64," + Convert.ToBase64String(e.MainImage) + "\" />")
+                            }
+                        </td>
+                        <td>
+                            <span class="yellow-border">
+                                $@Html.DisplayFor(m => e.Price)
+                            </span>
+                        </td>
+                        <td>
+                            <span class="yellow-border">
+                                @Html.DisplayFor(m => e.StockQuantity)
+                            </span>
+                        </td>
+                        <td>
+                            <a href="@Url.Action("Edit", "Products", new { id = e.Id })" class="simple-link">
+                                Изменить
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
