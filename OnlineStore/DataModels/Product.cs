@@ -74,5 +74,9 @@ namespace OnlineStore.DataModels
         /// </summary>
         //[Range(0, int.MaxValue)]
         public int StockQuantity { get; set; }
+
+        public int? CategoryId { get; set; }
+
+        public Category Category { get; set; }
     }
 }

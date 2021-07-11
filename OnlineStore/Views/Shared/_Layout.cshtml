@@ -17,7 +17,7 @@
                 <a href="@Url.Action("Index", "Home")" class="nav-pannel-link">Каталог</a>
             </li>
             <li>
-                <a href="@Url.Action("Categories", "Home")" class="nav-pannel-link">Категории</a>
+                <a href="@Url.Action("Index", "Categories")" class="nav-pannel-link">Категории</a>
             </li>
             <li>
                 <a href="@Url.Action("Index", "Home")" class="nav-pannel-link">Лучшая цена</a>
@@ -41,10 +41,12 @@
         @RenderBody()
     </div>
     <footer>
-        
-        &copy; @DateTime.Now.Year - Online Store
-        <br/>
-        Developed by Neevin Kirill
+        <br />
+        &copy; @DateTime.Now.Year - Онлайн магазин
+        <br />
+        Разработчик: Неевин Кирилл
+        <br />
+        <br />
     </footer>
 
 </body>

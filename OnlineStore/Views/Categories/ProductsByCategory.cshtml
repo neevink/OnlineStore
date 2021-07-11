@@ -1,0 +1,30 @@
+﻿@model IEnumerable<OnlineStore.ViewModels.ProductViewModel>
+@{
+    ViewBag.Title = "По категории";
+}
+
+<h2 style="text-align:center">Категория: @ViewBag.CategoryName</h2>
+
+<div class="grid-container">
+
+    @foreach (var e in Model)
+    {
+    <div class="grid-element">
+        <div class="element-cart-icon-wrapper">
+            <a class="element-cart-icon-link" href="@Url.Action("Detail", "Home", new { id = e.Id})">
+                <img class="element-cart-icon" src="~/Content/cart-icon.png" />
+            </a>
+        </div>
+        <img class="element-img" src="data:image/jpeg;base64,@Convert.ToBase64String(e.MainImage)" />
+        <div class="element-name">
+            <a href="@Url.Action("Detail", "Home", new { id = e.Id})">@e.Name</a>
+        </div>
+        <div class="element-description">
+            @e.ShortDescription
+        </div>
+        <div class="element-price">
+            $@e.Price
+        </div>
+    </div>
+    }
+</div>

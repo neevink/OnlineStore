@@ -1,44 +1,42 @@
-﻿using System;
+﻿using OnlineStore.Data;
+using OnlineStore.DataModels;
+using OnlineStore.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using OnlineStore.Data;
-using OnlineStore.DataModels;
-using System.Data.Entity;
-
-using OnlineStore.ViewModels;
 
 namespace OnlineStore.Controllers
 {
-    public class HomeController : BaseController
+    public class CategoriesController : BaseController
     {
         private StoreContext db = new StoreContext();
 
         [HttpGet]
         public ActionResult Index()
         {
-            var res = Mapper.Map<List<Product>, List<ProductViewModel>>(db.Products.ToList());
-
-            return View(res);
+            var categories = db.Categories.ToList();
+            return View(categories);
         }
 
         [HttpGet]
-        public ActionResult Detail(int? id)
+        public ActionResult ProductsByCategory(int? categoryId)
         {
-            if(id == null)
+            if (categoryId == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-
-            var product = db.Products.Include(x => x.Color).Where(x => x.Id == id).First();
-            if(product == null)
+            Category category = db.Categories.Where(x => x.Id == categoryId).First();
+            if (category == null)
             {
                 return HttpNotFound();
             }
 
-            return View(product);
+            ViewBag.CategoryName = category.Name;
+            var products = Mapper.Map<List<Product>, List<ProductViewModel>>(db.Products.Where(x => x.CategoryId == categoryId).ToList());
+            return View(products);
         }
 
         protected override void Dispose(bool disposing)

@@ -7,6 +7,7 @@ using System.Web;
 
 namespace OnlineStore.DataModels
 {
+    // Пока не используется, да и тип мебели лучше сделать через enum
     public class FurnitureType
     {
         [Key]

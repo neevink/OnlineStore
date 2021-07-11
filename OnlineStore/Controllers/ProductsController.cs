@@ -66,21 +66,20 @@ namespace OnlineStore.Controllers
 
             if (ModelState.IsValid)
             {
-                byte[] imageData = null;
-                // считываем переданный файл в массив байтов
-                using (var binaryReader = new BinaryReader(image.InputStream))
-                {
-                    imageData = binaryReader.ReadBytes(image.ContentLength);
-                }
-                // установка массива байтов
-                product.MainImage = imageData;
-
-                db.Products.Add(product);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                return View(product);
             }
-
-            return View(product);
+            byte[] imageData = null;
+            // считываем переданный файл в массив байтов
+            using (var binaryReader = new BinaryReader(image.InputStream))
+            {
+                imageData = binaryReader.ReadBytes(image.ContentLength);
+            }
+            // установка массива байтов
+            product.MainImage = imageData;
+            
+            db.Products.Add(product);
+            db.SaveChanges();
+            return RedirectToAction("Index");
         }
 
         // GET: Products/Edit/5
@@ -109,29 +108,29 @@ namespace OnlineStore.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(Product product, HttpPostedFileBase image)
         {            
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                if(image != null)
-                {
-                    byte[] imageData = null;
-                    // считываем переданный файл в массив байтов
-                    using (var binaryReader = new BinaryReader(image.InputStream))
-                    {
-                        imageData = binaryReader.ReadBytes(image.ContentLength);
-                    }
-                    // установка массива байтов
-                    product.MainImage = imageData;
-                }
-                else
-                {
-                    product.MainImage = db.Products.AsNoTracking().Where(x => x.Id == product.Id).First().MainImage;
-                }
-
-                db.Entry(product).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                return View(product);
             }
-            return View(product);
+            if (image != null)
+            {
+                byte[] imageData = null;
+                // считываем переданный файл в массив байтов
+                using (var binaryReader = new BinaryReader(image.InputStream))
+                {
+                    imageData = binaryReader.ReadBytes(image.ContentLength);
+                }
+                // установка массива байтов
+                product.MainImage = imageData;
+            }
+            else
+            {
+                product.MainImage = db.Products.AsNoTracking().Where(x => x.Id == product.Id).First().MainImage;
+            }
+
+            db.Entry(product).State = EntityState.Modified;
+            db.SaveChanges();
+            return RedirectToAction("Index");
         }
         
         // POST: Products/Delete/5

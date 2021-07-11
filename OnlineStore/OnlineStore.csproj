@@ -134,6 +134,7 @@
     <Compile Include="AutoMapper\MapperRules.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="DataModels\Account.cs" />
@@ -147,8 +148,8 @@
     <Compile Include="DataModels\FurnitureType.cs" />
     <Compile Include="DataModels\Role.cs" />
     <Compile Include="DataModels\RoleEnum.cs" />
-    <Compile Include="Data\StoreContext.cs" />
-    <Compile Include="Data\StoreContextInitializer.cs" />
+    <Compile Include="DataBase\StoreContext.cs" />
+    <Compile Include="DataBase\StoreContextInitializer.cs" />
     <Compile Include="ExtensionMethods\DbSetExtension.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -194,7 +195,8 @@
   <ItemGroup>
     <None Include="packages.config" />
     <Content Include="Views\Account\LogIn.cshtml" />
-    <Content Include="Views\Home\Categories.cshtml" />
+    <Content Include="Views\Categories\Index.cshtml" />
+    <Content Include="Views\Categories\ProductsByCategory.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

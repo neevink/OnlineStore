@@ -14,20 +14,36 @@ namespace OnlineStore.Data
     {
         protected override void Seed(StoreContext db)
         {
+            #region Роли
             Role admin = new Role() { Id = RoleEnum.Admin, Name = "Администратор" };
             Role customer = new Role() { Id = RoleEnum.Customer, Name = "Покупатель" };
 
-            db.Roles.Add(admin);
-            db.Roles.Add(customer);
+            db.Roles.AddRange(new Role[] { admin, customer });
+            #endregion
 
+            #region Цвета
             Color white = new Color() { Name = "Белый" };
             Color oak = new Color() { Name = "Дуб" };
             Color black = new Color() { Name = "Чёрный" };
 
-            db.Colors.Add(white);
-            db.Colors.Add(oak);
-            db.Colors.Add(black);
+            db.Colors.AddRange(new Color[] { white, oak, black });
+            #endregion
 
+            #region Категории
+            Category otherCategory = new Category();
+            otherCategory.Name = "Другое";
+            Category tablesCategory = new Category();
+            tablesCategory.Name = "Столы";
+            Category chairsCategory = new Category();
+            chairsCategory.Name = "Стулья";
+            Category wardrobesCategory = new Category();
+            wardrobesCategory.Name = "Шкафы";
+
+            db.Categories.AddRange(new Category[]{otherCategory, tablesCategory, chairsCategory, wardrobesCategory});
+
+            #endregion
+
+            #region Товары
             Product table = new Product()
             {
                 SKU = "392.271.68",
@@ -40,7 +56,8 @@ namespace OnlineStore.Data
                 Hight = 74,
                 StockQuantity = 10,
                 Price = 34,
-                MainImage = GetImageBytesFromPath(@"E:\VisualStudioProjects\OnlineStore\OnlineStore\Content\melltorp-stol.jpg")
+                MainImage = GetImageBytesFromPath(@"E:\VisualStudioProjects\OnlineStore\OnlineStore\Content\melltorp-stol.jpg"),
+                Category = tablesCategory
             };
             Product chair = new Product()
             {
@@ -54,7 +71,8 @@ namespace OnlineStore.Data
                 Hight = 87,
                 StockQuantity = 4,
                 Price = 25,
-                MainImage = GetImageBytesFromPath(@"E:\VisualStudioProjects\OnlineStore\OnlineStore\Content\eggelstad-chair.jpg")
+                MainImage = GetImageBytesFromPath(@"E:\VisualStudioProjects\OnlineStore\OnlineStore\Content\eggelstad-chair.jpg"),
+                Category = chairsCategory
             };
             Product wardrobe = new Product()
             {
@@ -68,12 +86,12 @@ namespace OnlineStore.Data
                 Hight = 176,
                 StockQuantity = 2,
                 Price = 109,
-                MainImage = GetImageBytesFromPath(@"E:\VisualStudioProjects\OnlineStore\OnlineStore\Content\rakkestad-wardrobe.jpg")
+                MainImage = GetImageBytesFromPath(@"E:\VisualStudioProjects\OnlineStore\OnlineStore\Content\rakkestad-wardrobe.jpg"),
+                Category = wardrobesCategory
             };
 
-            db.Products.Add(table);
-            db.Products.Add(chair);
-            db.Products.Add(wardrobe);
+            db.Products.AddRange(new Product[] { table, chair, wardrobe });
+            #endregion
 
             db.SaveChanges();
         }

@@ -13,9 +13,16 @@ namespace OnlineStore.DataModels
         public int Id { get; set; }
 
         [Required]
+        [MaxLength(32)]
         public string Name { get; set; }
 
+        // Изображение пока не используется
         [Column(TypeName = "image")]
         public byte[] Image { get; set; }
+
+        /// <summary>
+        /// Продукты, принадлежащие этой категории
+        /// </summary>
+        public ICollection<Product> Products { get; set; }
     }
 }

@@ -1,0 +1,17 @@
+﻿@model IEnumerable<OnlineStore.DataModels.Category>
+@{
+    ViewBag.Title = "Категории";
+}
+
+<div class="container">
+    <div class="wrapper">
+        <h2>Категории товаров</h2>
+        @foreach (var e in Model)
+        {
+            <a href="@Url.Action("ProductsByCategory", "Categories", new { categoryId = e.Id})" class="simple-link">@e.Name</a>
+            <br />
+            <br />
+        }
+        <div style="height:100px"> </div>
+    </div>
+</div>
