@@ -6,6 +6,9 @@ using System.Web;
 
 namespace OnlineStore.DataModels
 {
+    /// <summary>
+    /// Дитали товара
+    /// </summary>
     public class OrderDetail
     {
         [Key]

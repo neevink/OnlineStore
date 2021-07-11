@@ -17,7 +17,6 @@ namespace OnlineStore
 
         protected void Application_Start()
         {
-            // Поскольку этот метод вызывается единожды, настройки будут установлены также один раз
             MapperConfiguration = MapperGlobalConfiguration.Get();
 
             AreaRegistration.RegisterAllAreas();

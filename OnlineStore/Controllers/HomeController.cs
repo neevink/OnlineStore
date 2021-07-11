@@ -40,5 +40,13 @@ namespace OnlineStore.Controllers
 
             return View(product);
         }
+
+        [HttpGet]
+        public ActionResult Categories()
+        {
+
+
+            return View();
+        }
     }
 }

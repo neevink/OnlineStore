@@ -10,7 +10,7 @@
         {
             @Html.AntiForgeryToken()
 
-            <h2>Добавить новый товар в каталог</h2>
+            <h2>Изменить товар</h2>
             @Html.ActionLink("Отмена", "Index", null, new { @class = "simple-link" })
 
             @Html.ValidationSummary(true, "", new { @class = "" })
@@ -111,6 +111,10 @@
                         Главное изображение
                     </td>
                     <td>
+                        @if (Model.MainImage != null)
+                        {
+                            @Html.Raw("<img class='big-img' src=\"data:image/jpeg;base64," + Convert.ToBase64String(Model.MainImage) + "\" />")
+                        }
                         <input type="file" name="Image" class="" />
                     </td>
                 </tr>

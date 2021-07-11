@@ -17,7 +17,7 @@
                 <a href="@Url.Action("Index", "Home")" class="nav-pannel-link">Каталог</a>
             </li>
             <li>
-                <a href="@Url.Action("Index", "Home")" class="nav-pannel-link">Новинки</a>
+                <a href="@Url.Action("Categories", "Home")" class="nav-pannel-link">Категории</a>
             </li>
             <li>
                 <a href="@Url.Action("Index", "Home")" class="nav-pannel-link">Лучшая цена</a>
@@ -32,18 +32,15 @@
                 <a href="@Url.Action("Index", "Products")" class="nav-pannel-link">Админ-панель</a>
             </li>
                         <li>
-                <a href="@Url.Action("Index", "Home")" class="nav-pannel-link">Вход</a>
+                <a href="@Url.Action("LogIn", "Account")" class="nav-pannel-link">Вход</a>
             </li>
         </ul>
     </div>
 
     <div class="content">
         @RenderBody()
-        
-
     </div>
     <footer>
-        <hr />
         
         &copy; @DateTime.Now.Year - Online Store
         <br/>

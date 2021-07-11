@@ -132,10 +132,12 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="AutoMapper\MapperGlobalConfiguration.cs" />
     <Compile Include="AutoMapper\MapperRules.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="DataModels\Account.cs" />
+    <Compile Include="DataModels\Category.cs" />
     <Compile Include="DataModels\Color.cs" />
     <Compile Include="DataModels\Currency.cs" />
     <Compile Include="DataModels\Order.cs" />
@@ -191,6 +193,8 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <Content Include="Views\Account\LogIn.cshtml" />
+    <Content Include="Views\Home\Categories.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
