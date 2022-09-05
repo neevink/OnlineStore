@@ -1,8 +1,17 @@
-# Онлайн магазин мебели
-Пример моего кода для портфалио
+# Online furniture store
 
-Использованные технологии:
-- ASP.Net MVC 5
-- EntityFramework
-- AutoMapper
-- HTML + CSS + JS (jQuery)
+Online furniture store developed by me.
+
+The main page:
+
+<img src="docs/main.png" />
+
+Product details:
+
+<img src="docs/details.png" />
+
+Administrator's page:
+
+<img src="docs/admin.png" />
+
+Used technologies: ASP.Net MVC 5, EntityFramework, AutoMapper
